@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Keyboard Events Handling</title>
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        text-align: center;
+        margin: 50px;
+        background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        color: #333;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    h2 {
+        font-size: 2.5rem;
+        color: #444;
+        margin-bottom: 10px;
+    }
+    p {
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 20px;
+    }
+    #key-container {
+        width: 90%;
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 30px;
+        border: none;
+        border-radius: 15px;
+        background: white;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        font-size: 1.2rem;
+        font-weight: bold;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    #key-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+    #key-info {
+        margin-top: 20px;
+        padding: 15px 20px;
+        font-size: 1.1rem;
+        color: white;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        display: inline-block;
+        border-radius: 8px;
+        transition: background 0.3s ease;
+    }
+    input {
+        padding: 12px;
+        font-size: 1rem;
+        width: 80%;
+        max-width: 400px;
+        margin: 20px auto;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        outline: none;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    input:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 8px rgba(102, 126, 234, 0.5);
+    }
+    .keydown {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+    }
+    .keypress {
+        background: linear-gradient(135deg, #4caf50, #81c784);
+    }
+    .keyup {
+        background: linear-gradient(135deg, #ff6f61, #ff9a9e);
+    }
+ </style>
+</head>
+<body>
+ <h2>Keyboard Events Handling</h2>
+ <p>Type inside the input box below to see the key events in action.</p>
+ <input type="text" id="key-input" placeholder="Type something here..." autofocus>
+ <div id="key-container">
+    <p id="key-info">Press any key to see the event details.</p>
+ </div>
+ <script>
+    const keyInput = document.getElementById("key-input");
+    const keyInfo = document.getElementById("key-info");
+
+    // Keydown Event
+    keyInput.addEventListener("keydown", function(event) {
+        keyInfo.textContent = `Keydown: Key "${event.key}" | Code: ${event.code}`;
+        keyInfo.className = "keydown";
+    });
+
+    // Keypress Event
+    keyInput.addEventListener("keypress", function(event) {
+        keyInfo.textContent = `Keypress: Key "${event.key}" | Code: ${event.code}`;
+        keyInfo.className = "keypress";
+    });
+
+    // Keyup Event
+    keyInput.addEventListener("keyup", function(event) {
+        keyInfo.textContent = `Keyup: Key "${event.key}" | Code: ${event.code}`;
+        keyInfo.className = "keyup";
+    });
+ </script>
+</body>
+</html>
